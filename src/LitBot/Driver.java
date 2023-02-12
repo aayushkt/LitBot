@@ -7,16 +7,19 @@ import java.util.Scanner;
 
 public class Driver {
 
+    static List<Player> players = new ArrayList<>();
+
     public static void main(String[] args){
         setupGame();
     }
 
     public static void setupGame(){
-        List<Player> players = getPlayers();
-        dealCards(players);
+        setupPlayers();
+        dealCards();
+        players.get(0).takeTurn();
     }
 
-    public static List<Player> getPlayers(){
+    public static void setupPlayers(){
         Scanner input = new Scanner(System.in);
         int numOfPlayers = 0;
 
@@ -25,11 +28,11 @@ public class Driver {
             numOfPlayers = input.nextInt();
         } catch (Exception e) {
             System.out.println("Please enter an even integer.");
+            //TODO: Input sanitization and error handling
             System.out.println(e);
             input.reset();
         }
 
-        List<Player> players = new ArrayList<Player>(numOfPlayers);
 
         System.out.println("Enter the names of LitBot's teammates:");
         Player LitBot = new Player("LitBot", true);
@@ -46,11 +49,10 @@ public class Driver {
             players.add(temp);
         }
 
-        return players;
     }
 
-    public static void dealCards(List<Player> players){
-        List<Card> deck = new ArrayList<Card>(54);
+    public static void dealCards(){
+        List<Card> deck = new ArrayList<>(54);
         for (Suit s : Suit.values()) {
             if (s == Suit.JOKER){
                 Card newCard = new Card(0, s);
