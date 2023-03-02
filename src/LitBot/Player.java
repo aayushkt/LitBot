@@ -3,17 +3,17 @@ package LitBot;
 import java.util.ArrayList;
 import java.util.List;
 public class Player {
-    boolean LitBotTeam;
-    String name;
-    List<Card> hand = new ArrayList<Card>();
+    final boolean LIT_BOT_TEAM;
+    final String NAME;
+    final List<Card> HAND = new ArrayList<Card>();
 
     public Player(String name, boolean LitBotTeam){
-        this.name = name;
-        this.LitBotTeam = LitBotTeam;
+        this.NAME = name;
+        this.LIT_BOT_TEAM = LitBotTeam;
     }
 
     public void printHand(){
-        for (Card c: hand ) {
+        for (Card c: HAND ) {
             System.out.println(c);
         }
     }

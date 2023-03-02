@@ -1,9 +1,9 @@
 package LitBot;
 
 public enum Suit {
-    DIAMOND,
-    CLUB,
-    HEART,
-    SPADE,
-    JOKER
+    Spade,
+    Heart,
+    Diamond,
+    Club,
+    Joker
 }

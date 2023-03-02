@@ -8,15 +8,26 @@ import java.util.Scanner;
 public class Driver {
 
     static List<Player> players = new ArrayList<>();
+    static int LitBotTeamSets = 0;
+    static int OpposingTeamSets = 0;
 
     public static void main(String[] args){
-        setupGame();
+//        setupGame();
+        System.out.println(Suit.valueOf("Spades").ordinal());
     }
 
     public static void setupGame(){
         setupPlayers();
         dealCards();
-        players.get(0).takeTurn();
+        // Debugging
+        /*
+        for (Player p: players ) {
+            System.out.println(p.name);
+            p.printHand();
+            System.out.println();
+        }
+        */
+        playGame(players.get(0));
     }
 
     public static void setupPlayers(){
@@ -54,7 +65,7 @@ public class Driver {
     public static void dealCards(){
         List<Card> deck = new ArrayList<>(54);
         for (Suit s : Suit.values()) {
-            if (s == Suit.JOKER){
+            if (s == Suit.Joker){
                 Card newCard = new Card(0, s);
                 deck.add(newCard);
                 newCard = new Card(1, s);
@@ -72,7 +83,7 @@ public class Driver {
         for (int i = 0; i < handSize; i++) {
             for (Player p : players) {
                 int randomCardIndex = r.nextInt(deck.size());
-                p.hand.add(deck.get(randomCardIndex));
+                p.HAND.add(deck.get(randomCardIndex));
                 deck.remove(randomCardIndex);
             }
         }
@@ -80,13 +91,17 @@ public class Driver {
         int playerNum = 0;
         while(deck.size() > 0){
             int randomCardIndex = r.nextInt(deck.size());
-            players.get(playerNum).hand.add(deck.get(randomCardIndex));
+            players.get(playerNum).HAND.add(deck.get(randomCardIndex));
             deck.remove(randomCardIndex);
             randomCardIndex = r.nextInt(deck.size());
-            players.get(players.size() - playerNum - 1).hand.add(deck.get(randomCardIndex));
+            players.get(players.size() - playerNum - 1).HAND.add(deck.get(randomCardIndex));
             deck.remove(randomCardIndex);
             playerNum++;
         }
+    }
 
+    public static void playGame(Player startingPlayer){
+        Player currentPlayer = startingPlayer;
+        // TODO: Implement playing game logic
     }
 }
