@@ -2,10 +2,11 @@ package LitBot;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class Player {
     final boolean LIT_BOT_TEAM;
     final String NAME;
-    final List<Card> HAND = new ArrayList<Card>();
+    final List<Card> HAND = new ArrayList<>();
 
     public Player(String name, boolean LitBotTeam){
         this.NAME = name;

@@ -11,8 +11,11 @@ public class Driver {
     static int LitBotTeamSets = 0;
     static int OpposingTeamSets = 0;
 
+    // The single scanner object used for all Input
+    static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args){
-//        setupGame();
+        setupGame();
         System.out.println(Suit.valueOf("Spades").ordinal());
     }
 
@@ -31,7 +34,6 @@ public class Driver {
     }
 
     public static void setupPlayers(){
-        Scanner input = new Scanner(System.in);
         int numOfPlayers = 0;
 
         System.out.print("Enter the number of players (including LitBot): ");
@@ -40,7 +42,7 @@ public class Driver {
         } catch (Exception e) {
             System.out.println("Please enter an even integer.");
             //TODO: Input sanitization and error handling
-            System.out.println(e);
+            System.out.println(e.getMessage());
             input.reset();
         }
 
