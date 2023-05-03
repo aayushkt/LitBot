@@ -3,7 +3,7 @@ package LitBot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player extends CardHolder{
     final boolean LIT_BOT_TEAM;
     final String NAME;
     final List<Card> HAND = new ArrayList<>();
@@ -14,8 +14,9 @@ public class Player {
     }
 
     public void printHand(){
+        System.out.println(NAME + "'s hand:");
         for (Card c: HAND ) {
-            System.out.println(c);
+            System.out.println("\t" + c);
         }
     }
 }
