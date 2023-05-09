@@ -126,4 +126,17 @@ public class Game {
         }
         return set*6 + cardNum;
     }
+
+    // Returns the number of cards the player has
+    public static int cardsInHand(Player player){
+        int output = 0;
+        for (CardHolder[] set: cards) {
+            for (CardHolder cardHolder: set) {
+                if(cardHolder.equals(player)){
+                    output++;
+                }
+            }
+        }
+        return output;
+    }
 }
