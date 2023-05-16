@@ -36,10 +36,14 @@ public class Driver {
 
         /*
          TODO:
-         Probably use reflection to generate the right types
+         (Probably) Use reflection to generate the right types
          of players instead of manually storing them in this list
          and putting them in the switch statement
         */
+
+        /*
+        TODO: Abstract away all player input, make a class that does it
+         */
         List<String> playerTypes = Arrays.asList("human", "litbot");
 
         System.out.println("Enter the players on team one!");
@@ -62,7 +66,6 @@ public class Driver {
         List<Player> teamTwo = new ArrayList<>();
         while(teamTwo.size() < numOfPlayers/2){
             System.out.println("Which type of player?");
-            input = new Scanner(System.in);
             String rawString = input.nextLine().toLowerCase(Locale.ROOT);
             if (playerTypes.contains(rawString)){
                 switch (rawString) {
