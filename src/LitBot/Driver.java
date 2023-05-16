@@ -62,7 +62,7 @@ public class Driver {
 
         Team firstTeam = new Team(teamOne);
 
-        System.out.println("Enter the players on team one!");
+        System.out.println("Enter the players on team two!");
         List<Player> teamTwo = new ArrayList<>();
         while(teamTwo.size() < numOfPlayers/2){
             System.out.println("Which type of player?");
@@ -76,7 +76,7 @@ public class Driver {
         }
 
         Team secondTeam = new Team(teamTwo);
-
+        System.out.println("PLACEHOLDER");
     }
 
 }
