@@ -5,16 +5,21 @@ import java.util.*;
 
 public class Driver {
 
+    public static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args){
         setupGame();
     }
-    public static Scanner input = new Scanner(System.in);
 
     public static void setupGame(){
-        setupPlayers();
+        Team[] teams = setupPlayers();
+
+        //Don't have to store reference since its all static
+        //Kinda smelly, TODO: Why is everything static/global?
+        new Game(teams[0], teams[1]);
     }
 
-    public static void setupPlayers(){
+    public static Team[] setupPlayers(){
 
         int numOfPlayers = 0;
 
@@ -35,13 +40,6 @@ public class Driver {
         }
 
         /*
-         TODO:
-         (Probably) Use reflection to generate the right types
-         of players instead of manually storing them in this list
-         and putting them in the switch statement
-        */
-
-        /*
         TODO: Abstract away all player input, make a class that does it
          */
         List<String> playerTypes = Arrays.asList("human", "litbot");
@@ -60,8 +58,6 @@ public class Driver {
             System.out.println("No players of type " + rawString);
         }
 
-        Team firstTeam = new Team(teamOne);
-
         System.out.println("Enter the players on team two!");
         List<Player> teamTwo = new ArrayList<>();
         while(teamTwo.size() < numOfPlayers/2){
@@ -75,8 +71,7 @@ public class Driver {
             }
         }
 
-        Team secondTeam = new Team(teamTwo);
-        System.out.println("PLACEHOLDER");
+        return new Team[]{new Team(teamOne), new Team(teamTwo)};
     }
 
 }
