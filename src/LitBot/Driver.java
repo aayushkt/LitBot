@@ -8,15 +8,12 @@ public class Driver {
     public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args){
-        setupGame();
+        Game currentGame = setupGame();
     }
 
-    public static void setupGame(){
+    public static Game setupGame(){
         Team[] teams = setupPlayers();
-
-        //Don't have to store reference since its all static
-        //Kinda smelly, TODO: Why is everything static/global?
-        new Game(teams[0], teams[1]);
+        return new Game(teams[0], teams[1]);
     }
 
     public static Team[] setupPlayers(){
